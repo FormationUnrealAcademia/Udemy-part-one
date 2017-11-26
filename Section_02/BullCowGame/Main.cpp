@@ -46,9 +46,12 @@ void PlayGame()
 
 	//loop for the number of turns asking for guesses
 	constexpr int32 NUMBER_OF_TURN = 5;
-	//TODO Change from FOR to WHILE loop one we are validating tries
-	for (int32 i = 1; i <= MaxTries; i++) {
-		Ftext guess = GetGuess(); //TODO make loop checking valid
+	
+	for (int32 i = 1; i <= MaxTries; i++) //TODO Change from FOR to WHILE
+	{ 
+		Ftext guess = GetGuess(); 
+
+		EGuessStatus Status = BCgame.CheckGuessValidity(guess);
 
 		//Submit values guess to the game
 		FBullCowcount BullCowCount =  BCgame.SubmitGuess(guess);
@@ -63,6 +66,7 @@ void PlayGame()
 	//TODO summerise game
 }
 
+//TODO change to getValidGuess
 Ftext GetGuess() {
 
 	int32 CurrnetTries = BCgame.GetCurrentTry();
