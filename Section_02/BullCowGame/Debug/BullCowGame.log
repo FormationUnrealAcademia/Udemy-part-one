@@ -1,2 +1,3 @@
-﻿  FBullCowGame.cpp
+﻿  Main.cpp
+c:\users\conjure\documents\udemy-part-one\section_02\bullcowgame\main.cpp(95): warning C4715: 'GetValidGuess': not all control paths return a value
   BullCowGame.vcxproj -> C:\Users\Conjure\Documents\Udemy-part-one\Section_02\Debug\BullCowGame.exe
