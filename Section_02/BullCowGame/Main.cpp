@@ -52,7 +52,7 @@ void PlayGame()
 		Ftext guess = GetValidGuess(); 
 
 		//Submit values guess to the game
-		FBullCowcount BullCowCount =  BCgame.SubmitGuess(guess);
+		FBullCowcount BullCowCount =  BCgame.SubmitValidGuess(guess);
 		//Print numbers of bull and cows
 		std::cout << "Bulls = " << BullCowCount.Bulls;
 		std::cout << " Cows = " << BullCowCount.Cows << std::endl;
@@ -65,12 +65,11 @@ void PlayGame()
 Ftext GetValidGuess() 
 {
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
-
+	Ftext guess = "";
 	do {
 		//Get a guess from the player
 		int32 CurrnetTries = BCgame.GetCurrentTry();
 		std::cout << "Try : " << CurrnetTries << " \nEnter your guess : ";
-		Ftext guess = "";
 		std::getline(std::cin, guess);
 
 		// check status and give feedback
@@ -87,11 +86,12 @@ Ftext GetValidGuess()
 			std::cout << "Please enter a word without repeating letters.\n";
 			break;
 		default:
-			return guess;
+			// assume the guess is valid
 			break;
 		}
 		std::cout << std::endl;
 	} while (Status != EGuessStatus::OK); // keep looping until we get no errors
+	return guess;
 }
 
 bool AskToPlayAgain()
