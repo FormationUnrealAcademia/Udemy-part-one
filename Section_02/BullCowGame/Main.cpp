@@ -18,7 +18,6 @@ FBullCowGame BCgame; //instantiate a new game
 
 //the entry point for our application
 int main(){
-	std::cout << BCgame.GetCurrentTry();
 	bool bPlayAgain = false;
 
 	do {
@@ -42,12 +41,12 @@ void PlayGame()
 {
 	BCgame.Reset();
 	int32 MaxTries = BCgame.GetMaxTries();
-	//std::cout << MaxTries << std::endl;
-
-	//loop for the number of turns asking for guesses
-	constexpr int32 NUMBER_OF_TURN = 5;
 	
-	for (int32 i = 1; i <= MaxTries; i++) //TODO Change from FOR to WHILE
+
+	//loop for guesses while the game is NOT won
+	// until there a still tries remaining
+	
+	while (!BCgame.IsGameWon() && BCgame.GetCurrentTry() <= MaxTries)
 	{ 
 		Ftext guess = GetValidGuess(); 
 
